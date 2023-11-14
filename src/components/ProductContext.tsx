@@ -17,7 +17,6 @@ export const ProductProvider: FC<ProductContextProps> = ({ children }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
-    // Fetch or set your products here
     const fetchData = async () => {
       try {
         const response = await axios.get('https://run.mocky.io/v3/b54fe93f-f5a1-426b-a76c-e43d246901fd');
@@ -29,8 +28,7 @@ export const ProductProvider: FC<ProductContextProps> = ({ children }) => {
     };
 
     fetchData();
-  }, []); // Empty dependency array to fetch data only once
-
+  }, []); 
 
   const contextValue: ProductContextValue = {
     products,

@@ -45,8 +45,33 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
+    font-size: 16px;
   }
 
   .or-separator {
     margin-right: 20px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .pagination button {
+
+    border: 1px solid #ddd; /* Gray border */
+    
+    padding: 10px 15px; /* Padding */
+    margin: 0 5px; /* Margin between buttons */
+    cursor: pointer; /* Pointer cursor */
+  }
+
+  .pagination button.active {
+    background-color: darkgray
+ 
+  }
+
+  .pagination button:hover:not(.active) {
+    background-color: lightgray
   }
