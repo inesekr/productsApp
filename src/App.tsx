@@ -11,10 +11,7 @@ const App: FC = () => {
     <ProductProvider>
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<ProductList />}
-        />
+        <Route path="/" element={<ProductList />}/>
         <Route path="/product/:id" element={<ProductDetailsWrapper />} />
       </Routes>
     </BrowserRouter>

@@ -67,9 +67,11 @@ const ProductList: FC = () => {
           value={nameSearchTerm}
           onChange={handleNameSearchChange}
         />
+
         <div className="or-separator">
           <p>or</p>
         </div>
+        
         <input className="input-field"
           type="text"
           placeholder="Search by category..."
