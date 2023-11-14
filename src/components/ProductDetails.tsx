@@ -8,7 +8,7 @@ interface ProductDetailsProps {
 const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
   
     if (!product) {
-        return <div>Loading...</div>; // or display an error message
+        return <div>Loading...</div>; 
     }
 
     return (
