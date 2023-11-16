@@ -1,29 +1,16 @@
-import { FC, useEffect, useState } from 'react';
-import axios from 'axios';
+import { FC  } from 'react';
 import ProductDetails from './ProductDetails';
 import { useParams } from 'react-router-dom';
-import { Product as ProductType } from './ProductTypes';
+import { Product as ProductType } from './Product';
+import { useProductContext } from './ProductContext';
 
 const ProductDetailsWrapper: FC = () => {
-  const { id } = useParams();
-  const [product, setProduct] = useState<ProductType | null>(null);
+    const { id } = useParams();
 
-  useEffect(() => {
-    const fetchProductDetails = async () => {
-      try {
-        const response = await axios.get(`https://run.mocky.io/v3/b54fe93f-f5a1-426b-a76c-e43d246901fd/`);
-        const productsArray = response.data.products || []; 
-        const selectedProduct = productsArray.find((p: ProductType) => String(p.id) === id);
-        setProduct(selectedProduct || null);   
-      } catch (error) {
-        console.error('Error fetching product details:', error);
-      }
-    };
-
-    fetchProductDetails();
-  }, [id]);
-
-  return <ProductDetails product={product} />;
+    const { products } = useProductContext();
+    const selectedProduct = products.find((p: ProductType) => String(p.id) === id);
+   
+    return <ProductDetails product={selectedProduct || null} />;
 };
 
 export default ProductDetailsWrapper;

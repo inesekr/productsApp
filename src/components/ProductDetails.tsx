@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Product as ProductType } from './ProductTypes';
+import { Product } from './Product';
 
 interface ProductDetailsProps {
-  product: ProductType | null;
+  product: Product | null;
 }
 
 const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
@@ -12,7 +12,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
     }
 
     return (
-      <div className="product-details-card">
+      <div className="product-details-card border border-solid border-gray-300 rounded-lg p-4 m-4 w-96 text-center no-underline text-black inline-block align-top bg-yellow-100">
         <h2>{product.name}</h2>
         <p>Price: {product.price} {product.currency}</p>
         <p>Category: {product.category}</p>

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, FC, ReactNode, useState, useEffect} from 'react';
-import { Product as ProductType } from './ProductTypes';
+import { Product as ProductType } from './Product';
 import axios from 'axios';
 
 interface ProductContextProps {

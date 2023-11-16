@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
-import Product from './Product';
-import { Product as ProductType } from './ProductTypes';
+import Product from './ProductListItem';
+import { Product as ProductType } from './Product';
 import { Link } from 'react-router-dom';
 import { useProductContext } from './ProductContext';
-import '../styles/Product.css';
 
 const PAGE_SIZE = 12; // Number of products per page
 
@@ -29,6 +28,7 @@ const ProductList: FC = () => {
   }, [nameSearchTerm, categorySearchTerm, currentPage, allProducts]);
 
   const handleNameSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('Search performed:', event.target.value);
     setNameSearchTerm(event.target.value);
     setCurrentPage(1); 
   };
@@ -60,19 +60,15 @@ const ProductList: FC = () => {
 
   return (
     <div>
-      <div className="input-container">
-        <input className="input-field"
+      <div className="input-container flex flex-wrap ml-10 mb-4 min-w-min">
+        <input className="input-field bg-gray-100 mr-4 mt-2 border border-solid border-gray-300 rounded-md p-2 text-lg focus:bg-white" 
           type="text"
           placeholder="Search by name..."
           value={nameSearchTerm}
           onChange={handleNameSearchChange}
         />
-
-        <div className="or-separator">
-          <p>or</p>
-        </div>
         
-        <input className="input-field"
+        <input className="input-field bg-gray-100 mr-4 mt-2 border border-solid border-gray-300 rounded-md p-2 text-lg focus:bg-white"
           type="text"
           placeholder="Search by category..."
           value={categorySearchTerm}
@@ -80,7 +76,7 @@ const ProductList: FC = () => {
         />
       </div>
  
-      <div className="product-list-container">
+      <div className="product-list-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 justify-around">
         {filteredProducts.map((product) => (
           <Link key={product.id} to={`/product/${product.id}`} className="product-link">
             <Product product={product} />
@@ -88,11 +84,14 @@ const ProductList: FC = () => {
         ))}
       </div>
 
-      <div className="pagination">
-        <button onClick={handleFirstPage} disabled={currentPage === 1}>
+      <div className="pagination flex justify-center mt-20">
+        <button onClick={handleFirstPage} disabled={currentPage === 1} className={`border border-solid border-gray-300 py-2 px-4 mx-1  ${
+      currentPage === 1 ? 'bg-gray-50' : 'hover:cursor-pointer bg-gray-200 '}`}>
           First
         </button>
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+        <button onClick={handlePreviousPage} disabled={currentPage === 1} className={`border border-solid border-gray-300 py-2 px-4 mx-1 ${
+      currentPage === 1 ? 'bg-gray-50' : 'hover:cursor-pointer bg-gray-200'
+    }`}>
           Previous
         </button>
 
@@ -100,16 +99,22 @@ const ProductList: FC = () => {
           <button
             key={index + 1}
             onClick={() => handlePageChange(index + 1)}
-            className={currentPage === index + 1 ? 'active' : ''}
+            className={`border border-solid border-gray-300 py-2 px-4 mx-1 cursor-pointer ${
+              currentPage === index + 1 ? 'bg-gray-300' : 'hover:bg-gray-100'
+            }`}
           >
             {index + 1}
           </button>
         ))}
 
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}  className={`border border-solid border-gray-300 py-2 px-4 mx-1 ${
+      currentPage === totalPages ? 'bg-gray-50' : 'hover:cursor-pointer bg-gray-200'
+    }`}>
           Next
         </button>
-        <button onClick={handleLastPage} disabled={currentPage === totalPages}>
+        <button onClick={handleLastPage} disabled={currentPage === totalPages}  className={`border border-solid border-gray-300 py-2 px-4 mx-1 ${
+      currentPage === totalPages ? 'bg-gray-50' : 'hover:cursor-pointer bg-gray-200'
+    }`}>
           Last
         </button>
       </div>

@@ -1,3 +1,4 @@
+import './index.css'; 
 import {FC} from 'react';
 import  {BrowserRouter, Routes, Route}  from 'react-router-dom';
 import ProductList from './components/ProductList';
@@ -7,7 +8,7 @@ import { ProductProvider } from './components/ProductContext';
 const App: FC = () => {
   return (
     <>
-    <h1>Products App</h1>
+    <h1 className="text-3xl font-bold underline p-5">Products App</h1>
     <ProductProvider>
     <BrowserRouter>
       <Routes>
@@ -21,5 +22,3 @@ const App: FC = () => {
 };
 
 export default App;
-
-
