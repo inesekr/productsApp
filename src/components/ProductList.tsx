@@ -4,7 +4,7 @@ import { Product as ProductType } from './Product';
 import { Link } from 'react-router-dom';
 import { useProductContext } from './ProductContext';
 
-const PAGE_SIZE = 12; // Number of products per page
+const PAGE_SIZE = 12; 
 
 const ProductList: FC = () => {
   const { products: allProducts } = useProductContext();
