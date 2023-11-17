@@ -60,15 +60,15 @@ const ProductList: FC = () => {
 
   return (
     <div>
-      <div className="input-container flex flex-wrap ml-10 mb-4 min-w-min">
-        <input className="input-field bg-gray-100 mr-4 mt-2 border border-solid border-gray-300 rounded-md p-2 text-lg focus:bg-white" 
+      <div className="flex flex-wrap ml-10 mb-4 min-w-min">
+        <input className="bg-gray-100 mr-4 mt-2 border border-solid border-gray-300 rounded-md p-2 text-lg focus:bg-white" 
           type="text"
           placeholder="Search by name..."
           value={nameSearchTerm}
           onChange={handleNameSearchChange}
         />
         
-        <input className="input-field bg-gray-100 mr-4 mt-2 border border-solid border-gray-300 rounded-md p-2 text-lg focus:bg-white"
+        <input className="bg-gray-100 mr-4 mt-2 border border-solid border-gray-300 rounded-md p-2 text-lg focus:bg-white"
           type="text"
           placeholder="Search by category..."
           value={categorySearchTerm}
@@ -76,7 +76,7 @@ const ProductList: FC = () => {
         />
       </div>
  
-      <div className="product-list-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 justify-around">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 justify-items-center">
         {filteredProducts.map((product) => (
           <Link key={product.id} to={`/product/${product.id}`} className="product-link">
             <Product product={product} />
@@ -84,7 +84,7 @@ const ProductList: FC = () => {
         ))}
       </div>
 
-      <div className="pagination flex justify-center mt-20">
+      <div className="flex justify-center mt-20">
         <button onClick={handleFirstPage} disabled={currentPage === 1} className={`border border-solid border-gray-300 py-2 px-4 mx-1  ${
       currentPage === 1 ? 'bg-gray-50' : 'hover:cursor-pointer bg-gray-200 '}`}>
           First

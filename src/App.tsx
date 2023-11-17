@@ -8,7 +8,7 @@ import { ProductProvider } from './components/ProductContext';
 const App: FC = () => {
   return (
     <>
-    <h1 className="text-3xl font-bold underline p-5">Products App</h1>
+    <h1 className="text-3xl font-bold text-yellow-800 underline p-5">Products App</h1>
     <ProductProvider>
     <BrowserRouter>
       <Routes>
