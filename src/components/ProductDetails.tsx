@@ -13,7 +13,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
 
     return (
       <div className="product-details-card border border-solid border-gray-300 rounded-lg p-4 m-4 w-96 text-center no-underline text-black inline-block align-top bg-yellow-100">
-        <h2>{product.name}</h2>
+        <h2 className="text-xl font-bold mb-2 text-yellow-800">{product.name}</h2>
         <p>Price: {product.price} {product.currency}</p>
         <p>Category: {product.category}</p>
         <p>Description: {product.description}</p>
